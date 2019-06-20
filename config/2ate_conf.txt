@@ -1,5 +1,5 @@
-receptor= ../protein/2ate.pdbqt
-ligand = ../ligand/nair_cid_135398647.pdbqt
+receptor= protein/2ate.pdbqt
+ligand =  ligand/nair_cid_135398647.pdbqt
 
 center_x = 18.715
 center_y = -17.31
@@ -9,6 +9,6 @@ size_x = 32
 size_y = 40
 size_z = 28
 
-out = ../docked_2ate_135398647.pdbqt
+out = output/docked_2ate_135398647.pdbqt
 
 exhaustiveness = 8
