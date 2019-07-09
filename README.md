@@ -15,5 +15,9 @@ This project supplements research performed as part of the [Research Scholars pr
 
 5. Modify `run.sh` to reference the correct configuration file for your receptor protein. Execute the script. If running on a local system, be aware that screening a large number of compounds will take a long time. See the next section for instructions on setting up parallel processing on a cluster or grid-based setup. A log file containing binding energies for each complex will be generated in `log`.
 
+6. Execute `vina_screen_get_top.py #`, with `#` being the number of top results you want to list. This will print the filenames of the docked structures with the lowest binding energies of those generated. These names can be redirected to a text file if desired; for example, a text file `top_results.txt` with the top 100 results can be generated using the command `vina_screen_get_top.py 100 > top_results.txt`.
+
+    **Note:** This is a Python 2 script. It will not work if run using Python 3.
+
 ## Parallel Processing
 Documentation will be prepared soon.
