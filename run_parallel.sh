@@ -21,8 +21,8 @@
 #PBS -r y
 
 # Process ligand files by directory
-for f in ligand/$(($PBS_ARRAY_INDEX + 1))/*.pdbqt; do
+for f in ligand/$PBS_ARRAY_INDEX/*.pdbqt; do
     b=$(basename $f .pdbqt)
-    echo Processing ligand $b in subdirectory $(($PBS_ARRAY_INDEX + 1))
+    echo Processing ligand $b in subdirectory $PBS_ARRAY_INDEX
     vina --config config/2ate_conf.txt --ligand $f --out output/${b}_docked.pdbqt
 done
