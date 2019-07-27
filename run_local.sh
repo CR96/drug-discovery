@@ -1,5 +1,5 @@
 #! /bin/bash
-# Run the docking simulation.
+# Run the docking simulation on a local machine.
 
 # This script was adapted from a script written by the authors of [AutoDock Vina.](https://vina.scripps.edu) i
 # The original is available at https://vina.scripps.edu/vina_screen_local.sh.
