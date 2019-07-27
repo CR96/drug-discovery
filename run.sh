@@ -10,8 +10,6 @@
 # multithreading. J. Comput. Chem. 2010;31(2):455-461.
 # doi:10.0112/jcc.21334
 
-# TODO: Set up a parallel processing batch script that screens all compounds in ligand/ against a specified enzyme in protein/
-
 # Create output and log directories if they don't exist
 mkdir -p log/
 mkdir -p output/
