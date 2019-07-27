@@ -21,7 +21,7 @@ exec > >(tee -i log/2ate_log.txt)
 exec 2>&1
 
 for f in ligand/*.pdbqt; do
-	b=`basename $f .pdbqt`
+	b=$(basename $f .pdbqt)
 	echo Processing ligand $b
 	vina --config config/2ate_conf.txt --ligand $f --out output/${b}.pdbqt
 done
