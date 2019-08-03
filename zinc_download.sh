@@ -27,20 +27,22 @@ lynx https://files.docking.org/catalogs/$catalog_directory/
 
 read -p "Enter the name of the catalog to download: " catalog_name
 
-echo "Downloading PDBQT tranche lists..."
+## MOL2 files are downloaded as some ZINC15 catalogs are not fully available in PDBQT format.
+## Run prepare_ligands.sh to convert files.
+echo "Downloading MOL2 tranche lists..."
 echo "=============="
-wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-pdbqt-frags
-wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-pdbqt-leads
-wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-pdbqt-lugs
+wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-mol2-frags
+wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-mol2-leads
+wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-mol2-lugs
 
-sed -i '1s/^/# PDBQT Fragments\n/' sdi-pdbqt-frags
-sed -i '1s/^/# PDBQT Leads\n/' sdi-pdbqt-leads
-sed -i '1s/^/# PDBQT Lugs\n/' sdi-pdbqt-lugs
+sed -i '1s/^/# MOL2 Fragments\n/' sdi-mol2-frags
+sed -i '1s/^/# MOL2 Leads\n/' sdi-mol2-leads
+sed -i '1s/^/# MOL2 Lugs\n/' sdi-mol2-lugs
 
-cat sdi-pdbqt-frags sdi-pdbqt-leads sdi-pdbqt-lugs > download
-rm sdi-pdbqt-frags
-rm sdi-pdbqt-leads
-rm sdi-pdbqt-lugs
+cat sdi-mol2-frags sdi-mol2-leads sdi-mol2-lugs > download
+rm sdi-mol2-frags
+rm sdi-mol2-leads
+rm sdi-mol2-lugs
 
 echo "Done. Now review the list and remove any tranches you do not wish to download."
 read -p "Press Enter to continue "
