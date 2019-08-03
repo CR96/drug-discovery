@@ -20,9 +20,9 @@ cd ligand/
 for f in *.mol2; do
 	b=$(basename $f .mol2)
 	output=$b.pdbqt
-    echo Converting ligand $f
+	echo Converting ligand $f
 	echo Saving as $output
-    obabel -imol2 $f -O $output
+	obabel -i mol2 $f -O $output
 	rm $f &
 done
 
@@ -60,10 +60,10 @@ wait
 n=0
 echo Arranging ligand subdirectories...
 for f in *.pdbqt; do
-  d=$(printf %01d $((i/290+1)))
-  mkdir -p $d
-  mv "$f" $d
-  let i++
+	d=$(printf %01d $((i/290+1)))
+	mkdir -p $d
+	mv "$f" $d
+	let i++
 done
 
 echo Done.
