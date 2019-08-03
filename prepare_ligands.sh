@@ -28,10 +28,17 @@ done
 
 wait
 
-### If needed, uncompress pdbqt files
+### If needed, uncompress pdbqt files.
+### For some reason, the ZINC database contains some *.gz files that aren't actually compressed
 for f in *.pdbqt.gz; do
-    echo Uncompressing ligand $f
-    gunzip $f &
+	b=$(basename $f .pdbqt.gz)
+	output=$b.pdbqt
+	if [[ $(file $f) == *compressed* ]]; then
+		echo Uncompressing ligand $f
+		gunzip $f &
+	else
+		echo Ligand $f is not compressed, removing .gz extension
+		mv $f $b &
 done
 
 wait
