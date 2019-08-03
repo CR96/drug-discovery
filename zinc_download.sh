@@ -38,6 +38,9 @@ sed -i '1s/^/# PDBQT Leads\n/' sdi-pdbqt-leads
 sed -i '1s/^/# PDBQT Lugs\n/' sdi-pdbqt-lugs
 
 cat sdi-pdbqt-frags sdi-pdbqt-leads sdi-pdbqt-lugs > download
+rm sdi-pdbqt-frags
+rm sdi-pdbqt-leads
+rm sdi-pdbqt-lugs
 
 echo "Done. Now review the list and remove any tranches you do not wish to download."
 read -p "Press Enter to continue "
