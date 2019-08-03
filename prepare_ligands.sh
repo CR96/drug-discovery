@@ -38,7 +38,7 @@ for f in *.pdbqt.gz; do
 		gunzip $f &
 	else
 		echo Ligand $f is not compressed, removing .gz extension
-		mv $f $b &
+		mv $f $output &
 	fi
 done
 
