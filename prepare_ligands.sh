@@ -16,18 +16,6 @@ mkdir -p output/
 
 cd ligand/
 
-### If needed, convert mol2 files to pdbqt
-for f in *.mol2; do
-	b=$(basename $f .mol2)
-	output=$b.pdbqt
-	echo Converting ligand $f
-	echo Saving as $output
-	obabel -i mol2 $f -O $output
-	rm $f &
-done
-
-wait
-
 ### If needed, uncompress pdbqt files.
 ### For some reason, the ZINC database contains some *.gz files that aren't actually compressed
 for f in *.pdbqt.gz; do
@@ -40,6 +28,18 @@ for f in *.pdbqt.gz; do
 		echo Ligand $f is not compressed, removing .gz extension
 		mv $f $output &
 	fi
+done
+
+wait
+
+### If needed, convert mol2 files to pdbqt
+for f in *.mol2; do
+	b=$(basename $f .mol2)
+	output=$b.pdbqt
+	echo Converting ligand $f
+	echo Saving as $output
+	obabel -i mol2 $f -O $output
+	rm $f &
 done
 
 wait
