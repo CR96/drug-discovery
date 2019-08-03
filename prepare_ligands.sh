@@ -39,6 +39,7 @@ for f in *.pdbqt.gz; do
 	else
 		echo Ligand $f is not compressed, removing .gz extension
 		mv $f $b &
+	fi
 done
 
 wait
