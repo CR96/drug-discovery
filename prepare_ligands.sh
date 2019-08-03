@@ -46,9 +46,12 @@ wait
 
 ### If needed, split pdbqt files
 for f in *.pdbqt; do
-   echo Splitting ligand $f
-   vina_split --input $f
-   rm $f &
+	firstline=$(head -n 1 $f)
+	if [[ firstline == *MODEL* ]]; then
+		echo Splitting ligand $f
+		vina_split --input $f
+		rm $f &
+	fi
 done
 
 wait
