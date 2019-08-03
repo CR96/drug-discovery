@@ -16,17 +16,16 @@ mkdir -p output/
 
 cd ligand/
 
-### If needed, uncompress pdbqt files.
+### If needed, uncompress molecule files.
 ### For some reason, the ZINC database contains some *.gz files that aren't actually compressed
-for f in *.pdbqt.gz; do
-	b=$(basename $f .pdbqt.gz)
-	output=$b.pdbqt
+for f in *.gz; do
+	b=$(basename $f .gz) ## Preserves filetype, eg. basename of *.mol2.gz is *.mol2
 	if [[ $(file $f) == *compressed* ]]; then
 		echo Uncompressing ligand $f
 		gunzip $f &
 	else
 		echo Ligand $f is not compressed, removing .gz extension
-		mv $f $output &
+		mv $f $b &
 	fi
 done
 
@@ -47,7 +46,7 @@ wait
 ### If needed, split pdbqt files
 for f in *.pdbqt; do
 	firstline=$(head -n 1 $f)
-	if [[ firstline == *MODEL* ]]; then
+	if [[ $firstline == *MODEL* ]]; then
 		echo Splitting ligand $f
 		vina_split --input $f
 		rm $f &
