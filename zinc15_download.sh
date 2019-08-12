@@ -11,12 +11,14 @@ cd ligand/
 
 read -p "Enter the name of the catalog to download: " catalog_name
 
-	curl  https://zinc15.docking.org/catalogs/$catalog_name/substances.txt -F output_fields="zinc_id" -F count=all > zinc.txt
+curl  https://zinc15.docking.org/catalogs/$catalog_name/substances.txt -F output_fields="zinc_id" -F count=all > zinc.txt
 
-	split -l 100 --additional-suffix=.txt zinc.txt
-	for i in x??.txt
-	do
-	curl https://zinc15.docking.org/protomers/subsets/usual.mol2.gz -F count=all -F zinc_id-in=@$i > $i.mol2
-	done
+split -l 100 --additional-suffix=.txt zinc.txt
+
+for f in x??.txt; do
+	b=$(basename $f .txt)
+	output=${catalog_name}_${b}
+	curl https://zinc15.docking.org/protomers/subsets/usual.mol2.gz -F count=all -F zinc_id-in=@$f > $output.mol2
+done
 
 rm *.txt
