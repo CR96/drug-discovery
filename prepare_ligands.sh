@@ -11,6 +11,10 @@
 #PBS -l select=1:ncpus=8:mem=8gb
 #PBS -q wsuq
 
+### Load software modules from WSU Grid
+module load python # Contains openbabel
+module load autodockvina/1.1.2
+
 # Create output directory if it doesn't exist
 mkdir -p output/
 
