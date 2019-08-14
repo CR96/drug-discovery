@@ -15,10 +15,10 @@
 module load python # Contains openbabel
 module load autodockvina/1.1.2
 
-# Create output directory if it doesn't exist
-mkdir -p output/
+# Create results directory if it doesn't exist
+mkdir -p results/
 
-cd ligand/
+cd ligands/
 
 ### If needed, uncompress molecule files.
 ### For some reason, the ZINC database contains some *.gz files that aren't actually compressed

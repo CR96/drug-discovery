@@ -14,7 +14,7 @@ import sys
 import glob
 
 def doit(n):
-    file_names = glob.glob('output/*.pdbqt')
+    file_names = glob.glob('results/*.pdbqt')
     everything = []
     failures = []
     print 'Found', len(file_names), 'pdbqt files'
