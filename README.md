@@ -1,23 +1,30 @@
 # Drug Discovery Virtual Screening
 
-This repository contains molecular docking database files and scripting tools for use in virtual screening campaigns conducted with [AutoDock Vina.](https://vina.scripps.edu)
+This repository contains molecular docking database files and scripting tools for use in virtual screening campaigns conducted with [AutoDock Vina.](http://vina.scripps.edu)
 
 This project supplements research performed as part of the [Research Scholars program at EACPHS](https://cphs.wayne.edu/pharmd/research-scholars.php), a concentration offered through the Doctor of Pharmacy program.
 
 ## Getting Started
 1. Install AutoDock Vina according to the directions on the developer's website. For Arch Linux users, [an unofficial package is also available in the AUR.](https://aur.archlinux.org/packages/autodock-vina/)
 
-2. Obtain a 3D protein structure in `.PDBQT` format from a database such as [RCSB PDB.](https://www.rcsb.org) This format may not be available for direct download; if this is the case, use a tool such as [Open Babel](https://openbabel.org) to convert from an available format. An uncomplexed structure of the protein N5-CAIR mutase (modified from [PBD ID: 2ATE](https://www.rcsb.org/structure/2ATE)) is included in the `protein` folder as an example.
+2. Install [MGLTools.](http://mgltools.scripps.edu/downloads/latest)
 
-3. Place the prepared file in the `protein` folder and create a configuration file in the `config` folder which specifies this file as the receptor for docking. See `2ate_config.txt` for an example.
+	**Important:** To avoid bugs in v1.5.7 RC1, [build MGLTools from source.](http://mgltools.scripps.edu/documentation/how-to/access-to-cvs)
 
-4. Obtain 3D ligand structure files in `.PDBQT` format for screening. Place these in the `ligand` folder. NitroAIR ([CID: 135398647](https://pubchem.ncbi.nlm.nih.gov/compound/135398647)), a ligand which forms a known complex with N5-CAIR mutase, is included in the `ligand` folder as an example.
+3. Install [Open Babel.](https://openbabel.org)
 
-5. Modify `run.sh` to reference the correct configuration file for your receptor protein. Execute the script. If running on a local system, be aware that screening a large number of compounds will take a long time. See the next section for instructions on setting up parallel processing on a cluster or grid-based setup. A log file containing binding energies for each complex will be generated in `log`.
+4. Obtain a 3D protein structure in `.PDBQT` format from a database such as [RCSB PDB.](https://www.rcsb.org) This format may not be available for direct download; if this is the case, use Open Babel to convert from an available format. An uncomplexed structure of the protein N5-CAIR mutase (modified from [PBD ID: 2ATE](https://www.rcsb.org/structure/2ATE)) is included in the `targets` directory as an example.
 
-6. Execute `vina_screen_get_top.py #`, with `#` being the number of top results you want to list. This will print the filenames of the docked structures with the lowest binding energies of those generated. These names can be redirected to a text file if desired; for example, a text file `top_results.txt` with the top 100 results can be generated using the command `vina_screen_get_top.py 100 > top_results.txt`.
+5. Place the prepared file in the `targets` directory and create a configuration file in the `config` directory which specifies this file as the receptor for docking. See `2ate.conf` for an example. Launch AutoDockTools using `$MGL_ROOT/bin/adt` and use the graphical interface to determine docking box coordinates for your target. Several guides and video walkthroughs of this process are available online.
+
+6. Obtain 3D ligand structure files in `.PDBQT` format for screening from a database such as [ZINC.](https://zinc15.docking.org) Place these in the `ligands` directory. NitroAIR ([CID: 135398647](https://pubchem.ncbi.nlm.nih.gov/compound/135398647)), a ligand which forms a known complex with N5-CAIR mutase, is included in the `ligands` directory as an example. Two shell scripts, `zinc15_download.sh` and `mirror_download.sh` are included to automate downloading catalogs from zinc15.docking.org and files.docking.org respectively.
+
+7. Run `prepare_ligands.sh` to automatically convert downloaded ligands into .PDBQT format and prepare files for docking. AutoDock Vina and Open Babel must be installed prior to running this script. Files will be split into subdirectories optimized for parallel processing.
+
+8. Modify `run_local.sh` (or `run_parallel.sh` if using a PBS-based HPC cluster) to reference the correct configuration file for your target receptor protein. Execute the script. Be aware that screening a large number of compounds will take a long time. When run locally, a log file containing binding energies for each complex will be generated in `log`. When run on an HPC cluster, PBS will generate log files automatically.
+
+9. Execute `vina_screen_get_top.py #`, with `#` being the number of top results you want to list. This will print the filenames of the docked structures with the lowest binding energies of those generated. These names can be redirected to a text file if desired; for example, a text file `top_results.txt` with the top 100 results can be generated using the command `vina_screen_get_top.py 100 > top_results.txt`.
 
     **Note:** This is a Python 2 script. It will not work if run using Python 3.
 
-## Parallel Processing
-Documentation will be prepared soon.
+10. For additional analysis including ranking and filtering by binding site, use [Raccoon2.](http://autodock.scripps.edu/resources/raccoon2/) Launch Raccoon2 using `$MGL_ROOT/bin/cadd`. From the Analysis tab, select `Process directory (Vina)` under `Docking results`. Select the `result` directory in the first window, then the desired target receptor from the `targets` directory in the second window. The results from Vina will be processed and an analysis log file will be generated.
