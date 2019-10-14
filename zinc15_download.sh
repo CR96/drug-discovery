@@ -13,7 +13,9 @@ read -p "Enter the name of the catalog to download: " catalog_name
 
 curl  https://zinc15.docking.org/catalogs/$catalog_name/substances.txt -F output_fields="zinc_id" -F count=all > zinc.txt
 
-split -l 100 --additional-suffix=.txt zinc.txt
+## Sort ZINC ID entries numerically and remove any duplicates
+sort zinc.txt | uniq > zinc_sorted.txt
+split -l 100 --additional-suffix=.txt zinc_sorted.txt
 
 for f in x??.txt; do
 	b=$(basename $f .txt)
@@ -21,4 +23,5 @@ for f in x??.txt; do
 	curl https://zinc15.docking.org/protomers/subsets/usual.mol2.gz -F count=all -F zinc_id-in=@$f > $output.mol2
 done
 
-rm *.txt
+rm x*.txt
+
