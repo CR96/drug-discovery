@@ -23,7 +23,7 @@ This project supplements research performed as part of the [Research Scholars pr
 
 8. Modify `run_local.sh` (or `run_parallel.sh` if using a PBS-based HPC cluster) to reference the correct configuration file for your target receptor protein. Execute the script. Be aware that screening a large number of compounds will take a long time. When run locally, a log file containing binding energies for each complex will be generated in `log`. When run on an HPC cluster, PBS will generate log files automatically.
 
-9. Execute `vina_screen_get_top.py #`, with `#` being the number of top results you want to list. This will print the filenames of the docked structures with the lowest binding energies of those generated. These names can be redirected to a text file if desired; for example, a text file `top_results.txt` with the top 100 results can be generated using the command `vina_screen_get_top.py 100 > top_results.txt`.
+9. Execute `vina_screen_get_info.py`. This will print the filename, ZINC ID, and binding energy of every docked structure in the `results` directory. This information can be redirected to a text file if desired; for example, a text file `results_info.txt` can be generated using the command `vina_screen_get_info.py > results_info.txt`.
 
     **Note:** This is a Python 2 script. It will not work if run using Python 3.
 
