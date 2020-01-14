@@ -35,13 +35,23 @@ done
 
 wait
 
+### If needed, convert SDF files to pdbqt
+for f in *.sdf; do
+	b=$(basename $f .sdf)
+	output=$b.pdbqt
+	echo Converting ligand $f
+	echo Saving as $output
+	obabel -i sdf $f -opdbqt -m --gen3d best -p -O $output
+	rm $f &
+done
+
 ### If needed, convert mol2 files to pdbqt
 for f in *.mol2; do
 	b=$(basename $f .mol2)
 	output=$b.pdbqt
 	echo Converting ligand $f
 	echo Saving as $output
-	obabel -i mol2 $f -O $output
+	obabel -i mol2 $f -opdbqt -m --gen3d best -p -O $output
 	rm $f &
 done
 
