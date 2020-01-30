@@ -17,6 +17,8 @@ module load python/3.7 # Contains openbabel
 source conda.sh
 conda activate openbabel_env
 
+cd ~/drug-discovery/
+
 # Create results directory if it doesn't exist
 mkdir -p results/
 

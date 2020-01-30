@@ -23,6 +23,8 @@
 ### Load AutoDock Vina module from WSU Grid
 module load autodockvina/1.1.2
 
+cd ~/drug-discovery
+
 # Process ligand files by directory
 for f in ligands/$PBS_ARRAY_INDEX/*.pdbqt; do
     b=$(basename $f .pdbqt)
