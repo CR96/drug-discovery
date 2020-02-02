@@ -28,7 +28,7 @@ lynx https://files.docking.org/catalogs/$catalog_directory/
 read -p "Enter the name of the catalog to download: " catalog_name
 
 ## MOL2 files are downloaded as some ZINC15 catalogs are not fully available in PDBQT format.
-## Run prepare_ligands.sh to convert files.
+## Run convert_ligands.sh to convert files.
 echo "Downloading MOL2 tranche lists..."
 echo "=============="
 wget https://files.docking.org/catalogs/$catalog_directory/$catalog_name/sdi-mol2-frags

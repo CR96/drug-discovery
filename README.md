@@ -19,7 +19,9 @@ This project supplements research performed as part of the [Research Scholars pr
 
 6. Obtain 3D ligand structure files in `.PDBQT` format for screening from a database such as [ZINC.](https://zinc15.docking.org) Place these in the `ligands` directory. NitroAIR ([CID: 135398647](https://pubchem.ncbi.nlm.nih.gov/compound/135398647)), a ligand which forms a known complex with N5-CAIR mutase, is included in the `ligands` directory as an example. Two shell scripts, `zinc15_download.sh` and `mirror_download.sh` are included to automate downloading catalogs from zinc15.docking.org and files.docking.org respectively.
 
-7. Run `prepare_ligands.sh` to automatically convert downloaded ligands into .PDBQT format and prepare files for docking. AutoDock Vina and Open Babel must be installed prior to running this script. Files will be split into subdirectories optimized for parallel processing.
+7. Run `arrange_ligands.sh ##` to split ligand files into a specified number of subdirectories optimized for parallel processing (for example, `arrange_ligands.sh 100` will organize ligands into 100 subdirectories).
+
+7. Run `convert_ligands.sh` to automatically convert downloaded ligands into .PDBQT format and prepare files for docking. AutoDock Vina and Open Babel must be installed prior to running this script.
 
 8. Modify `run_local.sh` (or `run_parallel.sh` if using a PBS-based HPC cluster) to reference the correct configuration file for your target receptor protein. Execute the script. Be aware that screening a large number of compounds will take a long time. When run locally, a log file containing binding energies for each complex will be generated in `log`. When run on an HPC cluster, PBS will generate log files automatically.
 
