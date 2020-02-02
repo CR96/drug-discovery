@@ -12,8 +12,10 @@
 #PBS -q wsuq
 
 ### Load software modules from WSU Grid
-module load python # Contains openbabel
 module load autodockvina/1.1.2
+module load python/3.7 # Contains openbabel
+source conda.sh
+conda activate openbabel_env
 
 # Create results directory if it doesn't exist
 mkdir -p results/
