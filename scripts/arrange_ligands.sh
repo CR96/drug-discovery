@@ -17,7 +17,7 @@ cd ../ligands/
 ### If needed, split sdf files
 for f in *.sdf; do
 	b=$(basename $f .sdf)
-	python split_sdf.py $b 1
+	python ../scripts/split_sdf.py $b 1
 	rm $f
 done
 
