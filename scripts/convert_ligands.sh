@@ -21,7 +21,7 @@ module load python/3.7 # Contains openbabel
 source conda.sh
 conda activate openbabel_env
 
-cd ~/drug-discovery/ligands
+cd ../ligands
 
 ### If needed, uncompress molecule files.
 ### For some reason, the ZINC database contains some *.gz files that aren't actually compressed

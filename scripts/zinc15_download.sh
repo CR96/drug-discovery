@@ -7,7 +7,7 @@
 
 #!/bin/bash
 
-cd ligands/
+cd ../ligands/
 
 read -p "Enter the name of the catalog to download: " catalog_name
 

@@ -23,14 +23,12 @@
 ### Load AutoDock Vina module from WSU Grid
 module load autodockvina/1.1.2
 
-cd ~/drug-discovery
-
 # Create results directory if it doesn't exist
-mkdir -p results/
+mkdir -p ../results/
 
 # Process ligand files by directory
-for f in ligands/$PBS_ARRAY_INDEX/*.pdbqt; do
+for f in ../ligands/$PBS_ARRAY_INDEX/*.pdbqt; do
     b=$(basename $f .pdbqt)
     echo Processing ligand $b in subdirectory $PBS_ARRAY_INDEX
-    vina --config config/2ate.conf --ligand $f --out results/${b}_out.pdbqt
+    vina --config ../config/2ate.conf --ligand $f --out ../results/${b}_out.pdbqt
 done

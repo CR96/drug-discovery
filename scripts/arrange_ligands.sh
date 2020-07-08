@@ -12,7 +12,7 @@
 #PBS -N rowec_arrange_ligands
 #PBS -q wsuq
 
-cd ~/drug-discovery/ligands/
+cd ../ligands/
 
 ### If needed, split sdf files
 for f in *.sdf; do

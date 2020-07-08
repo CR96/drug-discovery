@@ -9,7 +9,7 @@
 
 # Note: This is an interactive script. It is not designed to be run unattended.
 
-cd ligands/
+cd ../ligands/
 
 echo "30, 40, 50: In stock for immediate delivery"
 echo "20: Make on demand"

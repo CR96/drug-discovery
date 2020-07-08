@@ -17,7 +17,7 @@ import glob
 
 
 def doit():
-    os.chdir("./results")
+    os.chdir("../results")
     file_names = glob.glob('*.pdbqt')
     everything = []
     failures = []
