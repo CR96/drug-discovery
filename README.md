@@ -7,9 +7,7 @@ This project supplements research performed as part of the [Research Scholars pr
 ## Getting Started
 1. Install AutoDock Vina according to the directions on the developer's website. For Arch Linux users, [an unofficial package is also available in the AUR.](https://aur.archlinux.org/packages/autodock-vina/)
 
-2. Install [MGLTools.](http://mgltools.scripps.edu/downloads/latest)
-
-	**Important:** To avoid bugs in v1.5.7 RC1, [build MGLTools from source.](http://mgltools.scripps.edu/documentation/how-to/access-to-cvs)
+2. Install [MGLTools.](https://ccsb.scripps.edu/mgltools/)
 
 3. Install [Open Babel.](https://openbabel.org)
 
