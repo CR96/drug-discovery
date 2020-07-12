@@ -15,7 +15,7 @@ mkdir -p ../log/
 mkdir -p ../results/
 
 # Copy stdout and stderr into a single log file
-exec > >(tee -i log/2ate_log.txt)
+exec > >(tee -i ../log/2ate_log.txt)
 exec 2>&1
 
 for f in ../ligands/*.pdbqt; do
