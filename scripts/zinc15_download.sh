@@ -18,6 +18,7 @@ sort zinc.txt | uniq > zinc_sorted.txt
 split -l 100 --additional-suffix=.txt zinc_sorted.txt
 
 for f in x??.txt; do
+	[ -f "$f" ] || break
 	b=$(basename $f .txt)
 	output=${catalog_name}_${b}
 	curl https://zinc15.docking.org/protomers/subsets/usual.mol2.gz -F count=all -F zinc_id-in=@$f > $output.mol2

@@ -19,6 +19,7 @@ exec > >(tee -i ../log/2ate_log.txt)
 exec 2>&1
 
 for f in ../ligands/*.pdbqt; do
+	[ -f "$f" ] || break
 	b=$(basename $f .pdbqt)
 	echo Processing ligand $b
 	vina --config ../config/2ate.conf --ligand $f --out ../results/${b}_out.pdbqt

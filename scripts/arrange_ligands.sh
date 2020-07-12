@@ -16,6 +16,7 @@ cd ../ligands/
 
 ### If needed, split sdf files
 for f in *.sdf; do
+  [ -f "$f" ] || break
 	b=$(basename $f .sdf)
 	python ../scripts/split_sdf.py $b 1
 	rm $f
@@ -25,6 +26,7 @@ wait
 
 ### If needed, split pdbqt files
 for f in *.pdbqt; do
+  [ -f "$f" ] || break
 	firstline=$(head -n 1 $f)
 	if [[ $firstline == *MODEL* ]]; then
 		echo Splitting ligand $f
@@ -39,6 +41,7 @@ wait
 n=0
 echo Arranging ligand subdirectories...
 for f in *; do
+  [ -f "$f" ] || break
 	d=$(printf %01d $((i/$1+1)))
 	mkdir -p $d
 	mv "$f" $d

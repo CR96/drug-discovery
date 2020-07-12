@@ -28,6 +28,7 @@ mkdir -p ../results/
 
 # Process ligand files by directory
 for f in ../ligands/$PBS_ARRAY_INDEX/*.pdbqt; do
+	[ -f "$f" ] || break
     b=$(basename $f .pdbqt)
     echo Processing ligand $b in subdirectory $PBS_ARRAY_INDEX
     vina --config ../config/2ate.conf --ligand $f --out ../results/${b}_out.pdbqt

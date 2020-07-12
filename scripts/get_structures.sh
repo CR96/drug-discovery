@@ -5,6 +5,7 @@
 exec > >(tee -i ../log/2ate_structure_list.txt)
 exec 2>&1
 for f in ../results/*.pdbqt; do
+	[ -f "$f" ] || break
 	echo "Ligand name: $f"
 	grep 'REMARK  Name = ' $f | sed -i -e 's/"REMARK  Name = "//g'
 done

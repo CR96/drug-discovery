@@ -26,6 +26,7 @@ cd ../ligands
 ### If needed, uncompress molecule files.
 ### For some reason, the ZINC database contains some *.gz files that aren't actually compressed
 for f in *.gz; do
+	[ -f "$f" ] || break
 	b=$(basename $f .gz) ## Preserves filetype, eg. basename of *.mol2.gz is *.mol2
 	if [[ $(file $f) == *compressed* ]]; then
 		echo Uncompressing ligand $f
@@ -41,6 +42,7 @@ wait
 
 ### If needed, convert sdf files to pdbqt
 for f in *.sdf; do
+	[ -f "$f" ] || break
 	b=$(basename $f .sdf)
 	output=$b.pdbqt
 	echo Converting ligand $f
@@ -53,6 +55,7 @@ wait
 
 ### If needed, convert mol2 files to pdbqt
 for f in *.mol2; do
+	[ -f "$f" ] || break
 	b=$(basename $f .mol2)
 	output=$b.pdbqt
 	echo Converting ligand $f
