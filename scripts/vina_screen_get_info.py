@@ -1,4 +1,4 @@
-#! /usr/bin/python2.7
+#!/usr/bin/python2.7
 
 # Print the filename, ZINC ID, and binding energy for every file within a directory of AutoDock Vina results.
 

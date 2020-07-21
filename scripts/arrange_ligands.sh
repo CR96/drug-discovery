@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Arrange ligand files for parallel docking with AutoDock Vina.
 # Argument: The number of ligands per directory
 # Example: "arrange_ligands.sh 100" will organize ligands into directories of 100 each
@@ -8,7 +10,6 @@
 # multithreading. J. Comput. Chem. 2010;31(2):455-461.
 # doi:10.0112/jcc.21334
 
-#!/bin/bash
 #PBS -N rowec_arrange_ligands
 #PBS -q wsuq
 

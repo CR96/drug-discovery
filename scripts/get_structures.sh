@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 # Create a list of the chemical structure of each ligand docked.
 
 # Copy stdout and stderr into a single log ile

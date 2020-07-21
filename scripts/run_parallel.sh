@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Run the docking simulation in parallel using a PBS job array.
 # Be sure to run arrange_ligands.sh first to properly organize ligands into subdirectories.
 
@@ -10,7 +12,6 @@
 # multithreading. J. Comput. Chem. 2010;31(2):455-461.
 # doi:10.0112/jcc.21334
 
-#!/bin/bash
 #PBS -N rowec_docking
 #PBS -l select=1:ncpus=8:mem=2gb
 
