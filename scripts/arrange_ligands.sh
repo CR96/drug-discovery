@@ -10,8 +10,9 @@
 # multithreading. J. Comput. Chem. 2010;31(2):455-461.
 # doi:10.0112/jcc.21334
 
-#PBS -N rowec_arrange_ligands
-#PBS -q wsuq
+#SBATCH --job-name rowec_arrange_ligands
+#SBATCH -q primary
+#SBATCH -t 1440
 
 cd ../ligands/
 
