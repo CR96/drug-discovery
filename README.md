@@ -21,7 +21,7 @@ This project supplements research performed as part of the [Research Scholars pr
 
 7. Run `convert_ligands.sh` to automatically convert downloaded ligands into .PDBQT format and prepare files for docking. AutoDock Vina and Open Babel must be installed prior to running this script.
 
-8. Modify `run_local.sh` (or `run_parallel.sh` if using a PBS-based HPC cluster) to reference the correct configuration file for your target receptor protein. Execute the script. Be aware that screening a large number of compounds will take a long time. When run locally, a log file containing binding energies for each complex will be generated in `log`. When run on an HPC cluster, PBS will generate log files automatically.
+8. Modify `run_local.sh` (or `run_parallel.sh` if using a Slurm-based HPC cluster) to reference the correct configuration file for your target receptor protein. Execute the script. Be aware that screening a large number of compounds will take a long time. When run locally, a log file containing binding energies for each complex will be generated in `log`. When run on an HPC cluster, Slurm will generate log files automatically.
 
 9. Execute `vina_screen_get_info.py`. This will print the filename, ZINC ID, and binding energy of every docked structure in the `results` directory. This information can be redirected to a text file if desired; for example, a text file `results_info.txt` can be generated using the command `vina_screen_get_info.py > results_info.txt`.
 
