@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# Download ligand files from the static ZINC15 mirror at https://files.docking.org
+# Download ligand files from the static ZINC mirror at https://files.docking.org
 
 # Sterling T, Irwin JJ.
 # ZINC 15 — Ligand discovery for everyone.
 # J. Chem. Inf. Model. 2015;55:2324-2337.J. Comput. Chem. 2010;31(2):455-461.
 # doi:10.1021/acs.jcim.5b00559
+
+# Irwin JJ, Tang KG, Young J, et al.
+# ZINC20 — A free ultralarge-scale chemical database for ligand discovery.
+# J. Chem. Inf. Model. 2020, 60, 6065-6073.
+# doi:10.1021/acs.jcim.0c00675
 
 # Note: This is an interactive script. It is not designed to be run unattended.
 
